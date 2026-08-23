@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: white;
+            background: #0b0014;
+        }
+
+       
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                -45deg,
+                #16002b,
+                #3c096c,
+                #7b2cbf,
+                #c77dff,
+                #240046
+            );
+
+            background-size: 400% 400%;
+            animation: gradient 5s ease infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+      
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(10, 0, 20, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d8a4ff;
+            text-shadow: 0 0 15px #a855f7;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #d8a4ff;
+        }
+
+    
+        section {
+            min-height: 100vh;
+            padding: 100px 25px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        
+        .home h1 {
+            font-size: clamp(45px, 12vw, 80px);
+            margin-bottom: 10px;
+
+            background: linear-gradient(
+                90deg,
+                #fff,
+                #d8a4ff,
+                #a855f7
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+
+            text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+        }
+
+        .home p {
+            font-size: 18px;
+            color: #e9d5ff;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 14px 30px;
+            border-radius: 30px;
+
+            background: linear-gradient(
+                90deg,
+                #7b2cbf,
+                #c77dff
+            );
+
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(199, 125, 255, 0.9);
+        }
+
+        
+        .box {
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+
+            background: rgba(20, 0, 40, 0.55);
+            border: 1px solid rgba(216, 164, 255, 0.3);
+            border-radius: 20px;
+
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+        }
+
+        h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+            color: #d8a4ff;
+        }
+
+        .box p {
+            color: #eee;
+            line-height: 1.7;
+        }
+
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 700px;
+        }
+
+        .skill {
+            padding: 15px 25px;
+            border-radius: 15px;
+
+            background: rgba(124, 58, 237, 0.25);
+            border: 1px solid rgba(216, 164, 255, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #a855f7;
+        }
+
+    
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .project {
+            padding: 25px;
+            min-height: 180px;
+
+            background: rgba(20, 0, 40, 0.6);
+            border: 1px solid rgba(216, 164, 255, 0.3);
+            border-radius: 20px;
+
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: #c77dff;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+        }
+
+        .project h3 {
+            color: #d8a4ff;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        
+        .contact p {
+            color: #ddd;
+            margin: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(10, 0, 20, 0.7);
+            color: #c4a1d8;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 12px;
+            }
+
+            section {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .box {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <nav>
+        <div class="logo">MyPortfolio</div>
+
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+
+    
+    <section class="home" id="home">
+        <h1>Hello, I'm Rwynne</h1>
+
+        <p>
+            A beginner developer who wanna create websites,
+            applications, and cool projects.
+        </p>
+
+        <a href="#projects" class="button">
+            View My Work
+        </a>
+    </section>
+
+
+
+    <section id="about">
+        <div class="box">
+            <h2>About Me</h2>
+
+            <p>
+                I'm Rwynne <br>
+                17 Years old <br>
+                From BICOL <br>
+                Student of ZMC <br>
+                
+                
+            </p>
+        </div>
+    </section>
+
+
+
+    <section>
+        <h2>My Skills</h2>
+
+        <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Editing</div>
+            <div class="skill">Python</div>
+            <div class="skill">Java</div>
+            <div class="skill">Web Design</div>
+        </div>
+    </section>
+
+
+    
+    <section id="projects">
+        <h2>My Projects</h2>
+
+        <div class="projects">
+
+            <div class="project">
+                <h3>Project One</h3>
+                <p>
+                    HTML music player
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Project Two</h3>
+                <p>
+                    HTML Nino hub
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Project Three</h3>
+                <p>
+                    HTML portfolio
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+
+        <p>Email: rwynneordono@gmail.com</p>
+        <p>Facebook: Rwynne Ordono</p>
+
+        <a href="https://www.facebook.com/share/14hL1wV7esP/" class="button">
+            Contact Me
+        </a>
+    </section>
+
+
+    <footer>
+        Allysa <3
+    </footer>
+
+</body>
+</html>
