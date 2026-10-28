@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhook Test</title>
+</head>
+<body>
+
+    <h2>Test</h2>
+
+    <button onclick="sendMessage('Test 1 pressed!')">
+        Test 1
+    </button>
+
+    <button onclick="sendMessage('Test 2 pressed!')">
+        Test 2
+    </button>
+
+    <script>
+        const webhook = "https://discord.com/api/webhooks/1565128279617445990/Y5W71Gu-nV1qugBhhiO_rLWP22oWI8gIMEB0iDt_KRPPnEH5dQgTA_jKmbb2qTnTSkwh";
+
+        function sendMessage(message) {
+            fetch(webhook, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    content: message
+                })
+            })
+            .then(() => alert("Message sent!"))
+            .catch(() => alert("Something went wrong!"));
+        }
+    </script>
+
+</body>
+</html>
